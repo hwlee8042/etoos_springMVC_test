@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.etoos.study.domain.BoardVO;
+import com.etoos.study.domain.Criteria;
 
 import lombok.extern.log4j.Log4j;
 
@@ -19,6 +20,7 @@ public class BoardServiceTests {
 	
 	@Autowired
 	private BoardService service;
+	
 	
 	@Test
 	public void testExist() {
@@ -41,7 +43,9 @@ public class BoardServiceTests {
 	@Test
 	public void testGetList() {
 		log.info("======== testGetList");
-		service.getList().forEach(board -> log.info(board));
+//		service.getList().forEach(board -> log.info(board));
+		
+		service.getList(new Criteria(2, 10)).forEach(board -> log.info(board));
 	}
 	
 	@Test

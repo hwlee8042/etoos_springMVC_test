@@ -2,14 +2,16 @@ package com.etoos.study.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Select;
-
 import com.etoos.study.domain.BoardVO;
+import com.etoos.study.domain.Criteria;
 
 public interface BoardMapper {
 	
 	//@Select("select * from tbl_board where bno > 0")
 	public List<BoardVO> getList();
+	
+	//Criteria타입을 파라미터로 사용하는 매소드
+	public List<BoardVO> getListWithPaging(Criteria cri);
 	
 	//단순히 seq 다음값을 구해서 insert에 사용
 	public void insert(BoardVO board);
@@ -25,5 +27,9 @@ public interface BoardMapper {
 	
 	//Update처리
 	public int update(BoardVO board);
+	
+	//total
+	public int getTotalCount(Criteria cri);
+	
 	
 }

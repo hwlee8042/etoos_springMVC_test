@@ -75,4 +75,16 @@ public class BoardControllerTests {
 				.param("bno", "25")).andReturn().getModelAndView().getViewName();
 		log.info("delete :: " + resultPage);
 	}
+	
+	//pageNum, amount파라미터 테스트
+	@Test
+	public void testListPaging() throws Exception {
+		log.info("testListPaging start");
+		log.info(mockMvc.perform(
+				MockMvcRequestBuilders.get("/board/list")
+				.param("pageNum", "2")
+				.param("amount", "50"))
+				.andReturn().getModelAndView().getModelMap());
+		log.info("testListPaging end");
+	}
 }
